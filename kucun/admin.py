@@ -2,7 +2,7 @@ from django.contrib import admin
 #
 # # Register your models here.
 #
-from models import Shop, GoodsShop, GoodsRecord, Goods, GoodsAddRecord, GoodsSellRecord, InboundChannel, Order, \
+from kucun.models import Shop, GoodsShop, GoodsRecord, Goods, GoodsAddRecord, GoodsSellRecord, InboundChannel, Order, \
     GoodsReturnRecord, TransferShop, TransferRecord
 
 admin.site.register(Shop)

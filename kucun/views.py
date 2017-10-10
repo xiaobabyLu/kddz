@@ -7,7 +7,7 @@ from django.core.urlresolvers import reverse
 from django.http import HttpResponse
 from django.http.response import HttpResponseRedirect
 from django.shortcuts import render, render_to_response
-from models import Goods, Shop, GoodsShop, GoodsRecord, Backup, GoodsAddRecord, GoodsSellRecord, InboundChannel, \
+from kucun.models import Goods, Shop, GoodsShop, GoodsRecord, Backup, GoodsAddRecord, GoodsSellRecord, InboundChannel, \
     Cart, Order, GoodsReturnRecord, OtherCost, TransferShop, TransferRecord, ChangeCountRecord, RefundRecord
 from django.db.models import F
 
@@ -22,14 +22,14 @@ def all_goods(request):
         m = {'goods': good, 'kadi': kadi}
         amount += kadi.remain
         datas.append(m)
-    shang = len(goods) / 3
+    shang = len(goods) // 3
     yu = len(goods) % 3
     if yu != 0:
         shang += 1
 
     return render_to_response('all_goods.html',
                               {'request': request, 'data1': datas[:shang], 'data2': datas[shang:shang * 2],
-                               'data3': datas[shang * 2:], 'title': '卡迪管理系统', 'header': '卡迪管理系统', 'amount': amount})
+                               'data3': datas[shang * 2:], 'title': 'A1管理系统', 'header': 'A2管理系统', 'amount': amount})
 
 
 @login_required(login_url='/kucun/login')
@@ -902,7 +902,7 @@ def make_order(request):
             m = {'goods': good, 'kadi': kadi}
             # amount += kadi.remain
             datas.append(m)
-        shang = len(goods) / 2
+        shang = len(goods) // 2
         yu = len(goods) % 2
         if yu != 0:
             shang += 1

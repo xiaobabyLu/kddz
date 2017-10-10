@@ -46357,8 +46357,8 @@ CREATE TABLE IF NOT EXISTS `kucun_shop` (
 -- 转存表中的数据 `kucun_shop`
 --
 
-INSERT INTO `kucun_shop` (`id`, `name`, `principal_id`) VALUES
-(1, '卡迪电子', 2);
+  INSERT INTO `kucun_shop` (`id`, `name`, `principal_id`) VALUES
+  (1, '卡迪电子', 2);
 
 -- --------------------------------------------------------
 

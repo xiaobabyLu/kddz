@@ -13,26 +13,26 @@ class Goods(models.Model):
     recent_sell = models.DateField(blank=True, null=True)
     is_delete = models.BooleanField(default=False)
 
-    def __unicode__(self):  # Python 3: def __str__(self):
+    def __str__(self):
         return self.goods_name
 
 
 class Shop(models.Model):
     name = models.CharField(max_length=10)
-    principal = models.ForeignKey(User)  # 负责人
+    principal = models.ForeignKey(User)
 
-    def __unicode__(self):  # Python 3: def __str__(self):
+    def __str__(self):
         return self.name
 
 
 class GoodsShop(models.Model):
     goods = models.ForeignKey(Goods)
     shop = models.ForeignKey(Shop)
-    remain = models.IntegerField()  # 剩余
+    remain = models.IntegerField()
     last_updater = models.ForeignKey(User)
     last_update_date = models.DateTimeField(auto_now=True)
 
-    def __unicode__(self):  # Python 3: def __str__(self):
+    def __str__(self):
         return u"%s--%s" % (self.shop, self.goods)
 
 
@@ -43,7 +43,7 @@ class GoodsRecord(models.Model):
     updater = models.ForeignKey(User)
     date = models.DateTimeField(auto_now=True)
 
-    def __unicode__(self):  # Python 3: def __str__(self):
+    def __str__(self):
         return u"%s--%s" % (self.shop, self.goods)
 
 
@@ -60,7 +60,7 @@ class Order(models.Model):
     updater = models.ForeignKey(User)
     date = models.DateTimeField(auto_now_add=True)
 
-    def __unicode__(self):  # Python 3: def __str__(self):
+    def __str__(self):
         return self.name
 
 
@@ -88,7 +88,7 @@ class GoodsSellRecord(models.Model):
         receivable = self.sell_num * self.sell_price
         return receivable
 
-    def __unicode__(self):  # Python 3: def __str__(self):
+    def __str__(self):
         return u"%s--%s" % (self.shop, self.goods)
 
 
@@ -113,7 +113,7 @@ class GoodsAddRecord(models.Model):
     updater = models.ForeignKey(User)
     date = models.DateTimeField(auto_now_add=True)
 
-    def __unicode__(self):  # Python 3: def __str__(self):
+    def __str__(self):
         return u"%s--%s" % (self.shop, self.goods)
 
 
@@ -154,7 +154,7 @@ class LineItem(models.Model):
     unit_price = models.FloatField()
     quantity = models.IntegerField()
 
-    def __unicode__(self):  # Python 3: def __str__(self):
+    def __str__(self):
         return self.product.id
 
 
@@ -180,7 +180,7 @@ class TransferShop(models.Model):
     name = models.CharField(max_length=20)
     phonenumber = models.CharField(max_length=15)
 
-    def __unicode__(self):  # Python 3: def __str__(self):
+    def __unicode__(self):
         return self.name
 
 
@@ -201,7 +201,6 @@ class ChangeCountRecord(models.Model):
     date = models.DateTimeField(auto_now_add=True)
 
 
-# 还款记录
 class RefundRecord(models.Model):
     sell_record = models.ForeignKey(GoodsSellRecord)
     updater = models.ForeignKey(User)
